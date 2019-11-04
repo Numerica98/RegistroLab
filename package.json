@@ -2,7 +2,7 @@
   "name": "registrolab",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://numerica98.github.io/registrolab",
+  "homepage" : "http://numerica98.github.io/RegistroLab",
   "dependencies": {
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
