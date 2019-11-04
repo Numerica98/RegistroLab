@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/registrolab/static/css/main.fda940a2.chunk.css",
-    "main.js": "/registrolab/static/js/main.f720f49f.chunk.js",
-    "main.js.map": "/registrolab/static/js/main.f720f49f.chunk.js.map",
-    "runtime-main.js": "/registrolab/static/js/runtime-main.f661c381.js",
-    "runtime-main.js.map": "/registrolab/static/js/runtime-main.f661c381.js.map",
-    "static/js/2.2f6065fe.chunk.js": "/registrolab/static/js/2.2f6065fe.chunk.js",
-    "static/js/2.2f6065fe.chunk.js.map": "/registrolab/static/js/2.2f6065fe.chunk.js.map",
-    "index.html": "/registrolab/index.html",
-    "precache-manifest.11ce7fa0a1a54406ab0c6237f9496998.js": "/registrolab/precache-manifest.11ce7fa0a1a54406ab0c6237f9496998.js",
-    "service-worker.js": "/registrolab/service-worker.js",
-    "static/css/main.fda940a2.chunk.css.map": "/registrolab/static/css/main.fda940a2.chunk.css.map"
+    "main.css": "/RegistroLab/static/css/main.fda940a2.chunk.css",
+    "main.js": "/RegistroLab/static/js/main.f720f49f.chunk.js",
+    "main.js.map": "/RegistroLab/static/js/main.f720f49f.chunk.js.map",
+    "runtime-main.js": "/RegistroLab/static/js/runtime-main.6d163b11.js",
+    "runtime-main.js.map": "/RegistroLab/static/js/runtime-main.6d163b11.js.map",
+    "static/js/2.2f6065fe.chunk.js": "/RegistroLab/static/js/2.2f6065fe.chunk.js",
+    "static/js/2.2f6065fe.chunk.js.map": "/RegistroLab/static/js/2.2f6065fe.chunk.js.map",
+    "index.html": "/RegistroLab/index.html",
+    "precache-manifest.231af9253306e82b588b5fe144c05db3.js": "/RegistroLab/precache-manifest.231af9253306e82b588b5fe144c05db3.js",
+    "service-worker.js": "/RegistroLab/service-worker.js",
+    "static/css/main.fda940a2.chunk.css.map": "/RegistroLab/static/css/main.fda940a2.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.f661c381.js",
+    "static/js/runtime-main.6d163b11.js",
     "static/js/2.2f6065fe.chunk.js",
     "static/css/main.fda940a2.chunk.css",
     "static/js/main.f720f49f.chunk.js"
