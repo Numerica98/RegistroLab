@@ -42,7 +42,7 @@ class Input extends React.Component{
 
 function Rows (props){
     return(
-        props.list.map((current, index)=>{
+        props.list.map((current)=>{
             return (<tr key={current.id}>
             <td>{current.carnet}</td>
             <td>{current.schedule}</td>
@@ -88,7 +88,7 @@ class App extends React.Component{
 
     delete(id){
         const students = this.state.studentList.slice();
-        const studentList = students.filter((current, index)=>{
+        const studentList = students.filter((current)=>{
             return current.id !== id;
         })
 
