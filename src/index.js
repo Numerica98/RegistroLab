@@ -66,18 +66,24 @@ class App extends React.Component{
     add(e){
         e.preventDefault();
         const students = this.state.studentList.slice();
-        const tarde = e.target.elements["late_switch"].checked?'Tarde':'Temprano' 
-        students.push({
-            carnet:e.target.elements["carnet"].value,
-            schedule: e.target.elements["schedule"].value,
-            date: new Date(),
-            late:tarde,
-            id: this.state.id
-        })
-        this.setState({
-            studentList: students, 
-            id: this.state.id +1
-        })
+        const tarde = e.target.elements["late_switch"].checked?'Tarde':'Temprano';
+        const carnet_regex= new RegExp('^[0-9]{8}$');
+
+        if(carnet_regex.test(e.target.elements["carnet"].value)){
+            students.push({
+                carnet:e.target.elements["carnet"].value,
+                schedule: e.target.elements["schedule"].value,
+                date: new Date(),
+                late:tarde,
+                id: this.state.id
+            })
+            this.setState({
+                studentList: students, 
+                id: this.state.id +1
+            })
+        }else{
+            alert("Formato de carnet no valido");
+        }  
     }
 
     delete(id){
