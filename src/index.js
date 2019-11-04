@@ -5,14 +5,15 @@ import './index.css';
 class Input extends React.Component{
     render(){
         return(
+        <form onSubmit={(e)=>this.props.onClick(e)}>
             <div>
                 <div className="form-group">
-                    <label for="carnet" className="col-sm-2 col-form-label">Ingrese el carnet:</label>
+                    <label htmlFor="carnet" className="col-sm-2 col-form-label">Ingrese el carnet:</label>
                     <br></br>
                     <input className="form-control" type="text" name="carnet" id="carnet_field"></input>
                 </div>
                 <div className="form-group">
-                    <label for="schedule">Seleccione el horario:</label>
+                    <label htmlFor="schedule">Seleccione el horario:</label>
                     <select name="schedule" className="form-control" id="schedule_field">
                         <option>Lunes de 9:00 a 11.00</option>
                         <option>Martes de 13:30 a 15:30</option>
@@ -25,38 +26,69 @@ class Input extends React.Component{
             
                 <div className="form-group">
                     <div className="custom-control custom-switch">
-                        <input type="checkbox" className="custom-control-input" id="late_switch"></input>
-                        <label className="custom-control-label" for="late_switch">Llegó tarde?</label>
+                        <input type="checkbox" className="custom-control-input" id="late_switch" name="late_switch"></input>
+                        <label className="custom-control-label" htmlFor="late_switch">Llegó tarde?</label>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <button type="button" className="btn btn-danger" id="submit_btn">Ingresar</button>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-danger" id="submit_btn" >Ingresar</button>
                 </div>
             </div>
+        </form>
         );
     }
 }
 
-class Row extends React.Component{
-    render(){
-        return(
-            <tr>
-                <td>{this.props.carnet}</td>
-                <td>{this.props.schedule}</td>
-                <td>{this.props.date}</td>
-                <td>{this.props.late}</td>
-                <td><button className="btn btn-danger" onClick={this.props.onClick()}>Eliminar</button></td>
-            </tr>
-        );
-    }
+function Rows (props){
+    return(
+        props.list.map((current, index)=>{
+            return (<tr key={current.id}>
+            <td>{current.carnet}</td>
+            <td>{current.schedule}</td>
+            <td>{current.date.toLocaleString()}</td>
+            <td>{current.late}</td>
+            <td><button className="btn btn-danger" onClick={()=> props.onClick(current.id)}>Eliminar</button></td>
+        </tr>);
+        })
+    );
 }
 
 class App extends React.Component{
     constructor(props){
         super(props);
-        
+        this.state ={
+            studentList: [],
+            id:0
+        }
     }
+
+    add(e){
+        e.preventDefault();
+        const students = this.state.studentList.slice();
+        const tarde = e.target.elements["late_switch"].checked?'Tarde':'Temprano' 
+        students.push({
+            carnet:e.target.elements["carnet"].value,
+            schedule: e.target.elements["schedule"].value,
+            date: new Date(),
+            late:tarde,
+            id: this.state.id
+        })
+        this.setState({
+            studentList: students, 
+            id: this.state.id +1
+        })
+    }
+
+    delete(id){
+        const students = this.state.studentList.slice();
+        const studentList = students.filter((current, index)=>{
+            return current.id !== id;
+        })
+
+        this.setState({studentList});
+    }
+
     render(){
         return(
             <div className="app">
@@ -66,7 +98,7 @@ class App extends React.Component{
                         Registro de laboratorio
                     </h1>
                     <div className="app-input">
-                        <Input />
+                        <Input onClick={(e)=>this.add(e)}/>
                     </div>
                 </div>
                 <hr></hr>
@@ -83,7 +115,7 @@ class App extends React.Component{
                             </tr>
                         </thead>
                         <tbody id="table_body">
-                            <Row />
+                            <Rows list={this.state.studentList} onClick={(id)=>{this.delete(id)}}/>
                         </tbody>
                     </table>
                     </div>
