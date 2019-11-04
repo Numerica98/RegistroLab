@@ -31,20 +31,32 @@ class Input extends React.Component{
                 </div>
 
                 <div class="form-group">
-                    <button type="button" className="btn btn-danger" id="submit_btn" disabled>Ingresar</button>
+                    <button type="button" className="btn btn-danger" id="submit_btn">Ingresar</button>
                 </div>
             </div>
         );
     }
 }
 
-class List extends React.Component{
+class Row extends React.Component{
     render(){
-        //return();
+        return(
+            <tr>
+                <td>{this.props.carnet}</td>
+                <td>{this.props.schedule}</td>
+                <td>{this.props.date}</td>
+                <td>{this.props.late}</td>
+                <td><button className="btn btn-danger" onClick={this.props.onClick()}>Eliminar</button></td>
+            </tr>
+        );
     }
 }
 
 class App extends React.Component{
+    constructor(props){
+        super(props);
+        
+    }
     render(){
         return(
             <div className="app">
@@ -59,7 +71,7 @@ class App extends React.Component{
                 </div>
                 <hr></hr>
                 <section>
-                    <div className="app-list">
+                    <div className="app-row">
                     <table className="table table-hover">
                         <thead>
                             <tr className="table-dark">
@@ -71,7 +83,7 @@ class App extends React.Component{
                             </tr>
                         </thead>
                         <tbody id="table_body">
-                            <List />
+                            <Row />
                         </tbody>
                     </table>
                     </div>
